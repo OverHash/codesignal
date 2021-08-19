@@ -78,7 +78,7 @@ We break this down into three problems:
 
    We can iterate from 0->9 along the x-axis, storing seen elements in a HashSet and then an inner loop from 0->9 for the y-axis and access the grid through `grid[y][x]` to see if we have seen an element. If we have, it is a duplicate and we return false.
 
-This solution is an `O(1)` time-complexity solution, because we iterate a constant amount of times, and an `O(1)` space-complexity solution because we do not store auxiliary data. Note that if we were to make an N by N board, this solution is an `O(n)` time-complexity and `O(n)` space-complexity.
+This solution is an `O(1)` time-complexity solution, because we iterate a constant amount of times, and an `O(1)` space-complexity solution because we do not store auxiliary data. Note that if we were to make an `n` by `n` board, this solution is an `O(n^2)` time-complexity and `O(n)` space-complexity.
 
 ### Solution 2
 
@@ -87,6 +87,10 @@ We can improve our performance by iterating less and having a simpler solution b
 If we stored one HashSet that contains values such as `"5 found in row 0"`, `"6 found in row 2"` we can have an optimal solution.
 
 This works because HashSets do not store duplicates, so we can look-up and see if we have already stored a value in our row/column/sub-box.
+
+Note that this solution is likely slower, due to string hashing taking a long amount of time. It is good to know to think outside the box though.
+
+This solution is also `O(n^2)` where `n` is the grid-length (in this case, `9`).
 
 ### Addendum
 
